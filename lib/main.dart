@@ -1,7 +1,7 @@
 import 'package:businessman/core/generated/locator.dart';
 import 'package:flutter/material.dart';
-import 'package:auto_route/auto_route.dart' as AutoRouter;
-import 'package:businessman/core/generated/router.gr.dart' as AppRouter;
+import 'package:auto_route/auto_route.dart' as auto_router;
+import 'package:businessman/core/generated/router.gr.dart' as app_router;
 import 'package:stacked_services/stacked_services.dart';
 
 void main() {
@@ -15,13 +15,13 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Businessman gate to enter Tidikelt mega market',
-      builder: AutoRouter.ExtendedNavigator.builder<AppRouter.Router>(
-        router: AppRouter.Router(),
-        initialRoute: AppRouter.Routes.splashScreen,
+      builder: auto_router.ExtendedNavigator.builder<app_router.Router>(
+        router: app_router.Router(),
+        initialRoute: app_router.Routes.splashScreen,
         navigatorKey: StackedService.navigatorKey,
       ),
       theme: ThemeData(
-        primarySwatch: Colors.blue,
+        primarySwatch: Colors.teal,
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
     );

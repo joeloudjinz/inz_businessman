@@ -7,26 +7,24 @@ class PhoneVerificationScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Column(
-        crossAxisAlignment: CrossAxisAlignment.center,
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          Text('phone verification screen'),
+          const Text('phone verification screen'),
           Row(
-            crossAxisAlignment: CrossAxisAlignment.center,
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
               ElevatedButton(
                 onPressed: () {
                   locator<NavigationService>().back();
                 },
-                child: Icon(Icons.arrow_left_rounded),
+                child: const Icon(Icons.arrow_left_rounded),
               ),
               ElevatedButton(
                 onPressed: () {
                   locator<NavigationService>()
                       .navigateTo("/second-registration-screen");
                 },
-                child: Icon(Icons.arrow_right_rounded),
+                child: const Icon(Icons.arrow_right_rounded),
               ),
             ],
           ),

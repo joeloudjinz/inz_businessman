@@ -5,11 +5,8 @@ class Decorations {
     return InputDecoration(
       fillColor: Colors.grey.shade200,
       filled: true,
-      border: OutlineInputBorder(
+      border: const OutlineInputBorder(
         borderRadius: BorderRadius.all(Radius.circular(8.0)),
-        borderSide: BorderSide(
-          width: 1.0,
-        ),
       ),
       prefixIcon: Icon(icon),
       labelText: label,

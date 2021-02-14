@@ -7,19 +7,17 @@ class SplashScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Column(
-        crossAxisAlignment: CrossAxisAlignment.center,
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          Text('splash screen'),
+          const Text('splash screen'),
           Row(
-            crossAxisAlignment: CrossAxisAlignment.center,
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
               ElevatedButton(
                 onPressed: () {
                   locator<NavigationService>().navigateTo("/login-screen");
                 },
-                child: Icon(Icons.arrow_right_rounded),
+                child: const Icon(Icons.arrow_right_rounded),
               ),
             ],
           ),

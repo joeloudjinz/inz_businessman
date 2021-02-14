@@ -29,15 +29,14 @@ class LoginScreenContent extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Column(
-      crossAxisAlignment: CrossAxisAlignment.center,
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
         GreetingSection(),
         LoginForm(),
         // Divider(color: Colors.grey),
         ToRegistrationText(),
-        Divider(color: Colors.grey),
-        Text('login screen'),
+        const Divider(color: Colors.grey),
+        const Text('login screen'),
         MyNavigation(),
       ],
     );
@@ -52,7 +51,7 @@ class LoginForm extends StatefulWidget {
 class _LoginFormState extends State<LoginForm> {
   final GlobalKey<FormState> loginKey = GlobalKey<FormState>();
 
-  validate(String value) {
+  String validate(String value) {
     if (value.isEmpty) return "should not be empty";
     return null;
   }
@@ -71,7 +70,7 @@ class _LoginFormState extends State<LoginForm> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Padding(
-                  padding: EdgeInsets.only(bottom: 8.0),
+                  padding: const EdgeInsets.only(bottom: 8.0),
                   child: TextFormField(
                     keyboardType: TextInputType.emailAddress,
                     decoration: Decorations.decorateFormTextField(
@@ -80,7 +79,7 @@ class _LoginFormState extends State<LoginForm> {
                   ),
                 ),
                 Padding(
-                  padding: EdgeInsets.only(bottom: 8.0),
+                  padding: const EdgeInsets.only(bottom: 8.0),
                   child: TextFormField(
                     obscureText: true,
                     decoration: Decorations.decorateFormTextField(
@@ -92,10 +91,10 @@ class _LoginFormState extends State<LoginForm> {
                   onPressed: () {
                     if (loginKey.currentState.validate()) {
                       Scaffold.of(context)
-                          .showSnackBar(SnackBar(content: Text("valid")));
+                          .showSnackBar(const SnackBar(content: Text("valid")));
                     }
                   },
-                  child: Text('login'),
+                  child: const Text('login'),
                 ),
               ],
             )),
@@ -108,16 +107,15 @@ class GreetingSection extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Column(
-      crossAxisAlignment: CrossAxisAlignment.center,
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
         Image(
-          image: AssetImage('assets/logo.png'),
+          image: const AssetImage('assets/logo.png'),
           height: MediaQuery.of(context).size.height / 4,
           width: MediaQuery.of(context).size.width / 2,
         ),
-        Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 32.0),
+        const Padding(
+          padding: EdgeInsets.symmetric(horizontal: 32.0),
           child: Text(
             "Welcome back dear businessman, the market really needs your deals so login and start selling to satisfy customers",
             style: TextStyle(
@@ -137,12 +135,12 @@ class ToRegistrationText extends StatelessWidget {
       padding: const EdgeInsets.only(bottom: 8.0),
       child: RichText(
         text: TextSpan(
-          style: TextStyle(color: Colors.grey, fontSize: 10.0),
+          style: const TextStyle(color: Colors.grey, fontSize: 10.0),
           children: <TextSpan>[
-            TextSpan(text: "Don't have an account? "),
+            const TextSpan(text: "Don't have an account? "),
             TextSpan(
                 text: 'start your business from here',
-                style: TextStyle(color: Colors.blue),
+                style: const TextStyle(color: Colors.blue),
                 recognizer: TapGestureRecognizer()
                   ..onTap = () {
                     locator<NavigationService>()
@@ -159,21 +157,20 @@ class MyNavigation extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Row(
-      crossAxisAlignment: CrossAxisAlignment.center,
       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
       children: [
         ElevatedButton(
           onPressed: () {
             locator<NavigationService>().back();
           },
-          child: Icon(Icons.arrow_left_rounded),
+          child: const Icon(Icons.arrow_left_rounded),
         ),
         ElevatedButton(
           onPressed: () {
             locator<NavigationService>()
                 .navigateTo("/phone-registration-screen");
           },
-          child: Icon(Icons.arrow_right_rounded),
+          child: const Icon(Icons.arrow_right_rounded),
         ),
       ],
     );
