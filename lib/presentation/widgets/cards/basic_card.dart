@@ -21,13 +21,16 @@ class BasicCard extends StatelessWidget {
                 children: [
                   Text(
                     title,
-                    style: Theme.of(context).textTheme.headline1,
+                    style: Theme.of(context).textTheme.headline4,
                   ),
                 ],
               ),
             ),
             // AppDivider(),
-            Text(body),
+            Text(
+              body,
+              style: Theme.of(context).textTheme.bodyText2,
+            ),
           ],
         ),
       ),

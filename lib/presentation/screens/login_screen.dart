@@ -138,11 +138,14 @@ class ToRegistrationScreenWidget extends StatelessWidget {
       child: RichText(
         text: TextSpan(
           // style: const TextStyle(color: Colors.grey, fontSize: 10.0),
+          style: Theme.of(context).textTheme.caption,
           children: <TextSpan>[
             const TextSpan(text: "You don't have an account? "),
             TextSpan(
               text: 'start your business from here',
-              // style: const TextStyle(color: Colors.blue),
+              style: TextStyle(
+                color: Theme.of(context).accentColor,
+              ),
               recognizer: TapGestureRecognizer()
                 ..onTap = () => assistant.navigator
                     .navigateTo("/phone-registration-screen"),

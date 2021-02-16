@@ -16,13 +16,7 @@ class CustomTheme with ChangeNotifier {
     return ThemeData(
       primarySwatch: Colors.blueGrey,
       scaffoldBackgroundColor: CustomColors.light,
-      textTheme: const TextTheme(
-        headline1: TextStyle(
-          color: CustomColors.dark,
-          fontSize: 32,
-          fontWeight: FontWeight.w300,
-        ),
-      ),
+      textTheme: Typography.blackRedmond,
       cardTheme: CardTheme(
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(22.0),

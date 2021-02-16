@@ -96,12 +96,14 @@ class AgreementText extends StatelessWidget {
   Widget build(BuildContext context) {
     return RichText(
       text: TextSpan(
-        style: const TextStyle(color: Colors.grey, fontSize: 10.0),
+        style: Theme.of(context).textTheme.caption,
         children: <TextSpan>[
           const TextSpan(text: 'By clicking next, you agree to our '),
           TextSpan(
               text: 'Terms of Service',
-              style: const TextStyle(color: Colors.blue),
+              style: TextStyle(
+                color: Theme.of(context).accentColor,
+              ),
               recognizer: TapGestureRecognizer()
                 ..onTap = () {
                   //TODO: implement terms of service page for businessman
@@ -109,7 +111,9 @@ class AgreementText extends StatelessWidget {
           const TextSpan(text: ' and that you have read our '),
           TextSpan(
               text: 'Privacy Policy',
-              style: const TextStyle(color: Colors.blue),
+              style: TextStyle(
+                color: Theme.of(context).accentColor,
+              ),
               recognizer: TapGestureRecognizer()
                 ..onTap = () {
                   //TODO: implement privacy policy page for businessman

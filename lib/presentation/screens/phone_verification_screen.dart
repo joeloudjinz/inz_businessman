@@ -123,11 +123,12 @@ class VerificationInformationCard extends StatelessWidget {
                     padding: const EdgeInsets.only(bottom: 8.0),
                     child: Text(
                       "Phone Verification",
-                      style: Theme.of(context).textTheme.headline1,
+                      style: Theme.of(context).textTheme.headline4,
                     ),
                   ),
-                  const Text(
+                  Text(
                     "Enter the 6 digits you received in the SMS. if you didn't receive any click the resend button.",
+                    style: Theme.of(context).textTheme.bodyText2,
                   ),
                 ],
               ),
