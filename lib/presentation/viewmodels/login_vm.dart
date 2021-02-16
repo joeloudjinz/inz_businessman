@@ -11,10 +11,11 @@ class LoginViewModel {
   String password;
 
   submit() {
-    if (loginFormKey.currentState.validate()) {
-      debugPrint(email);
-      debugPrint(password);
+    if (!loginFormKey.currentState.validate()) {
+      return;
     }
+    debugPrint(email);
+    debugPrint(password);
   }
 
   validateEmail(String value) {

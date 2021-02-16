@@ -5,3 +5,4 @@ linter:
     prefer_const_literals_to_create_immutables: false
     type_annotate_public_apis: false
     always_declare_return_types: false
+    avoid_print: false
