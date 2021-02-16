@@ -104,7 +104,7 @@ class AgreementText extends StatelessWidget {
               style: const TextStyle(color: Colors.blue),
               recognizer: TapGestureRecognizer()
                 ..onTap = () {
-                  print('Terms of Service"');
+                  //TODO: implement terms of service page for businessman
                 }),
           const TextSpan(text: ' and that you have read our '),
           TextSpan(
@@ -112,7 +112,7 @@ class AgreementText extends StatelessWidget {
               style: const TextStyle(color: Colors.blue),
               recognizer: TapGestureRecognizer()
                 ..onTap = () {
-                  print('Privacy Policy"');
+                  //TODO: implement privacy policy page for businessman
                 }),
         ],
       ),

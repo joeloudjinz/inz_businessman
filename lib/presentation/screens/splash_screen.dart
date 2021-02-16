@@ -1,5 +1,4 @@
 import 'package:businessman/core/generated/locator.dart';
-import 'package:businessman/presentation/widgets/gradient_bg.dart';
 import 'package:flutter/material.dart';
 import 'package:stacked_services/stacked_services.dart';
 
