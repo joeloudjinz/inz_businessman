@@ -1,6 +1,6 @@
 import 'package:businessman/core/generated/locator.dart';
 import 'package:businessman/presentation/helpers/decorations.dart';
-import 'package:businessman/presentation/viewmodels/verification_vm.dart';
+import 'package:businessman/presentation/viewmodels/phone_verification_vm.dart';
 import 'package:businessman/presentation/widgets/divider.dart';
 import 'package:businessman/presentation/widgets/sixteen_padding.dart';
 import 'package:flutter/material.dart';
@@ -20,7 +20,7 @@ class PhoneVerificationScreen extends StatelessWidget {
 }
 
 class PhoneVerificationScreenContent extends StatelessWidget {
-  final _assistant = locator<CodeVerificationViewModel>();
+  final _assistant = locator<PhoneVerificationViewModel>();
 
   @override
   Widget build(BuildContext context) {
@@ -38,58 +38,57 @@ class PhoneVerificationScreenContent extends StatelessWidget {
 }
 
 class CodeVerificationWidget extends StatelessWidget {
-  final CodeVerificationViewModel assistant;
-  final TextEditingController _editingController = TextEditingController();
+  final PhoneVerificationViewModel assistant;
 
-  CodeVerificationWidget({this.assistant});
+  const CodeVerificationWidget({this.assistant});
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.end,
-      children: [
-        TextField(
-          decoration: Decorations.forIconTextField(
-            Icons.mobile_friendly_rounded,
-            "Code",
+    return Form(
+      key: assistant.phoneVerificationFormKey,
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.end,
+        children: [
+          TextFormField(
+            decoration: Decorations.forIconTextField(
+              Icons.mobile_friendly_rounded,
+              "Code",
+            ),
+            keyboardType: TextInputType.number,
+            maxLength: 6,
+            autofocus: true,
+            autocorrect: false,
+            validator: (value) => assistant.validateCode(value),
           ),
-          controller: _editingController,
-          keyboardType: TextInputType.number,
-          maxLength: 6,
-          autofocus: true,
-          autocorrect: false,
-        ),
-        Row(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Consumer(
-              builder: (context, watch, child) {
-                final notifier = watch(assistant.provider);
-                return ElevatedButton(
-                  onPressed: notifier.resendBtnStatus
-                      ? () {
-                          notifier.reStartTimer();
-                          notifier.disableResendBtn();
-                        }
-                      : null,
-                  child: const Text('Resend Token'),
-                );
-              },
-            ),
-            const Spacer(),
-            ElevatedButton(
-              onPressed: () {},
-              child: const Text('Verify'),
-            ),
-          ],
-        ),
-      ],
+          Row(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Consumer(
+                builder: (context, watch, child) {
+                  final notifier = watch(assistant.provider);
+                  return ElevatedButton(
+                    onPressed: notifier.resendBtnStatus
+                        ? () => assistant.resendPressed(notifier)
+                        : null,
+                    child: const Text('Resend'),
+                  );
+                },
+              ),
+              const Spacer(),
+              ElevatedButton(
+                onPressed: () => assistant.submit(),
+                child: const Text('Verify'),
+              ),
+            ],
+          ),
+        ],
+      ),
     );
   }
 }
 
 class VerificationInformationCard extends StatelessWidget {
-  final CodeVerificationViewModel assistant;
+  final PhoneVerificationViewModel assistant;
 
   const VerificationInformationCard({this.assistant});
 
@@ -101,7 +100,6 @@ class VerificationInformationCard extends StatelessWidget {
         padding: const EdgeInsets.all(8.0),
         child: Row(
           children: [
-            // timer
             Consumer(
               builder: (context, watch, child) {
                 final notifier = watch(assistant.provider);
@@ -110,15 +108,11 @@ class VerificationInformationCard extends StatelessWidget {
                     duration: Duration(seconds: notifier.timerSeconds),
                     displayProgressIndicator: false,
                     status: notifier.timerStatus,
-                    onEnd: () {
-                      notifier.enableResendBtn();
-                      notifier.resetTimer();
-                    },
+                    onEnd: () => assistant.onTimerEndEvent(notifier),
                   ),
                 );
               },
             ),
-            // texts
             Expanded(
               flex: 3,
               child: Column(
@@ -132,7 +126,6 @@ class VerificationInformationCard extends StatelessWidget {
                       style: Theme.of(context).textTheme.headline1,
                     ),
                   ),
-                  // AppDivider(),
                   const Text(
                     "Enter the 6 digits you received in the SMS. if you didn't receive any click the resend button.",
                   ),

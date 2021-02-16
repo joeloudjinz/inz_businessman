@@ -8,7 +8,7 @@ import 'package:get_it/get_it.dart';
 import 'package:injectable/injectable.dart';
 import 'package:stacked_services/stacked_services.dart';
 
-import '../../presentation/viewmodels/verification_vm.dart';
+import '../../presentation/viewmodels/phone_verification_vm.dart';
 import '../modules/third_party_services.dart';
 import '../modules/viewmodels_module.dart';
 
@@ -23,7 +23,7 @@ GetIt $initGetIt(
   final gh = GetItHelper(get, environment, environmentFilter);
   final viewModelsModule = _$ViewModelsModule();
   final thirdPartyServicesModule = _$ThirdPartyServicesModule();
-  gh.lazySingleton<CodeVerificationViewModel>(
+  gh.lazySingleton<PhoneVerificationViewModel>(
       () => viewModelsModule.codeVerificationViewModel);
   gh.lazySingleton<NavigationService>(
       () => thirdPartyServicesModule.navigationService);
@@ -32,8 +32,8 @@ GetIt $initGetIt(
 
 class _$ViewModelsModule extends ViewModelsModule {
   @override
-  CodeVerificationViewModel get codeVerificationViewModel =>
-      CodeVerificationViewModel();
+  PhoneVerificationViewModel get codeVerificationViewModel =>
+      PhoneVerificationViewModel();
 }
 
 class _$ThirdPartyServicesModule extends ThirdPartyServicesModule {
