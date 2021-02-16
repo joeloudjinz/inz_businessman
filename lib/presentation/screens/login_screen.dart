@@ -120,9 +120,6 @@ class GreetingSection extends StatelessWidget {
             padding: EdgeInsets.all(16.0),
             child: Text(
               "Welcome back dear businessman, the market really needs your deals so login and start selling to satisfy customers",
-              // style: TextStyle(
-              //   fontSize: 18.0,
-              // ),
             ),
           ),
         ],
