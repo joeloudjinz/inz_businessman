@@ -14,7 +14,9 @@ class CustomTheme with ChangeNotifier {
 
   static ThemeData get lightTheme {
     return ThemeData(
-      primarySwatch: Colors.blueGrey,
+      // primarySwatch: Colors.blueGrey,
+      primaryColor: CustomColors.second,
+      accentColor: CustomColors.dark,
       scaffoldBackgroundColor: CustomColors.light,
       textTheme: Typography.blackRedmond,
       cardTheme: CardTheme(
@@ -34,6 +36,7 @@ class CustomTheme with ChangeNotifier {
       ),
       elevatedButtonTheme: ElevatedButtonThemeData(
         style: ElevatedButton.styleFrom(
+          primary: CustomColors.second,
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(18.0),
           ),

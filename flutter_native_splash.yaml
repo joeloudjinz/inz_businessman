@@ -8,7 +8,8 @@ flutter_native_splash:
   # flutter pub run flutter_native_splash:remove
 
   # color is the only required parameter.  It sets the background color of your splash screen.
-  color: "#42a5f5"
+#  color: "#42a5f5"
+  color: "#FEF9E6"
 
   # Optional parameters are listed below.  To enable a parameter, uncomment the line by removing
   # the leading # character.
@@ -20,8 +21,8 @@ flutter_native_splash:
   # The color_dark and image_dark are parameters that set the color and image when the device is
   # in dark mode.  If they are not specified, the app will use the color and image above.
   # If the image_dark parameter is specified, color_dark must be specified.
-  #color_dark: "#042a49"
-  #image_dark: assets/splash-invert.png
+  color_dark: "#0B1320"
+  image_dark: assets/logo.png
 
   # The android and ios parameters can be used to disable generating a splash screen on a given
   # platform.
