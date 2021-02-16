@@ -12,11 +12,12 @@ class SecondRegistrationViewModel {
     if (!secondRegistrationFormKey.currentState.validate()) {
       return;
     }
+    debugPrint(fullName);
     debugPrint(email);
     debugPrint(password);
   }
 
-  validateFullName(String value) {
+  String validateFullName(String value) {
     if (value.isEmpty) {
       return 'should not be empty';
     }
@@ -24,7 +25,7 @@ class SecondRegistrationViewModel {
     return null;
   }
 
-  validateEmail(String value) {
+  String validateEmail(String value) {
     if (value.isEmpty) {
       return 'this field should not be empty';
     }
@@ -37,7 +38,7 @@ class SecondRegistrationViewModel {
     return null;
   }
 
-  validatePassword(String value) {
+  String validatePassword(String value) {
     if (value.isEmpty) {
       return 'should not be empty';
     }

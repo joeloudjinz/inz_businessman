@@ -1,5 +1,6 @@
 import 'package:businessman/core/generated/locator.dart';
 import 'package:businessman/presentation/helpers/decorations.dart';
+import 'package:businessman/presentation/viewmodels/login_vm.dart';
 import 'package:businessman/presentation/widgets/divider.dart';
 import 'package:businessman/presentation/widgets/sixteen_padding.dart';
 import 'package:flutter/gestures.dart';
@@ -29,14 +30,16 @@ class LoginScreen extends StatelessWidget {
 }
 
 class LoginScreenContent extends StatelessWidget {
+  final _assistant = locator<LoginViewModel>();
+
   @override
   Widget build(BuildContext context) {
     return Column(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
         GreetingSection(),
-        LoginForm(),
-        ToRegistrationText(),
+        LoginForm(assistant: _assistant),
+        ToRegistrationScreenWidget(assistant: _assistant),
         AppDivider(),
         const Text('login screen'),
         MyNavigation(),
@@ -46,6 +49,10 @@ class LoginScreenContent extends StatelessWidget {
 }
 
 class LoginForm extends StatefulWidget {
+  final LoginViewModel assistant;
+
+  const LoginForm({this.assistant});
+
   @override
   _LoginFormState createState() => _LoginFormState();
 }
@@ -53,17 +60,12 @@ class LoginForm extends StatefulWidget {
 class _LoginFormState extends State<LoginForm> {
   final GlobalKey<FormState> loginKey = GlobalKey<FormState>();
 
-  String validate(String value) {
-    if (value.isEmpty) return "should not be empty";
-    return null;
-  }
-
   @override
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 8.0),
       child: Form(
-          key: loginKey,
+          key: widget.assistant.loginFormKey,
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.end,
             mainAxisAlignment: MainAxisAlignment.center,
@@ -74,7 +76,7 @@ class _LoginFormState extends State<LoginForm> {
                   keyboardType: TextInputType.emailAddress,
                   decoration: Decorations.forIconTextField(
                       Icons.email_rounded, "email"),
-                  validator: (value) => validate(value),
+                  validator: (value) => widget.assistant.validateEmail(value),
                   autofocus: true,
                 ),
               ),
@@ -84,16 +86,12 @@ class _LoginFormState extends State<LoginForm> {
                   obscureText: true,
                   decoration: Decorations.forIconTextField(
                       Icons.lock_rounded, "password"),
-                  validator: (value) => validate(value),
+                  validator: (value) =>
+                      widget.assistant.validatePassword(value),
                 ),
               ),
               ElevatedButton(
-                onPressed: () {
-                  if (loginKey.currentState.validate()) {
-                    Scaffold.of(context)
-                        .showSnackBar(const SnackBar(content: Text("valid")));
-                  }
-                },
+                onPressed: () => widget.assistant.submit(),
                 child: const Text('login'),
               ),
             ],
@@ -119,7 +117,7 @@ class GreetingSection extends StatelessWidget {
           const Padding(
             padding: EdgeInsets.all(16.0),
             child: Text(
-              "Welcome back dear businessman, the market really needs your deals so login and start selling to satisfy customers",
+              "Welcome back dear businessman, the market really needs your deals & services.",
             ),
           ),
         ],
@@ -128,24 +126,27 @@ class GreetingSection extends StatelessWidget {
   }
 }
 
-class ToRegistrationText extends StatelessWidget {
+class ToRegistrationScreenWidget extends StatelessWidget {
+  final LoginViewModel assistant;
+
+  const ToRegistrationScreenWidget({this.assistant});
+
   @override
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.only(top: 8.0, bottom: 8.0),
       child: RichText(
         text: TextSpan(
-          style: const TextStyle(color: Colors.grey, fontSize: 10.0),
+          // style: const TextStyle(color: Colors.grey, fontSize: 10.0),
           children: <TextSpan>[
-            const TextSpan(text: "Don't have an account? "),
+            const TextSpan(text: "You don't have an account? "),
             TextSpan(
-                text: 'start your business from here',
-                style: const TextStyle(color: Colors.blue),
-                recognizer: TapGestureRecognizer()
-                  ..onTap = () {
-                    locator<NavigationService>()
-                        .navigateTo("/phone-registration-screen");
-                  }),
+              text: 'start your business from here',
+              // style: const TextStyle(color: Colors.blue),
+              recognizer: TapGestureRecognizer()
+                ..onTap = () => assistant.navigator
+                    .navigateTo("/phone-registration-screen"),
+            ),
           ],
         ),
       ),

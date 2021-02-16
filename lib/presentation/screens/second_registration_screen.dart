@@ -1,5 +1,6 @@
 import 'package:businessman/core/generated/locator.dart';
 import 'package:businessman/presentation/helpers/decorations.dart';
+import 'package:businessman/presentation/viewmodels/second_registration_vm.dart';
 import 'package:businessman/presentation/widgets/cards/basic_card.dart';
 import 'package:businessman/presentation/widgets/divider.dart';
 import 'package:businessman/presentation/widgets/sixteen_padding.dart';
@@ -59,12 +60,13 @@ class FinalRegistrationFormWidget extends StatefulWidget {
 
 class _FinalRegistrationFormWidgetState
     extends State<FinalRegistrationFormWidget> {
-  final finalRegistrationFormKey = GlobalKey<FormState>();
+  final SecondRegistrationViewModel assistant =
+      locator<SecondRegistrationViewModel>();
 
   @override
   Widget build(BuildContext context) {
     return Form(
-      key: finalRegistrationFormKey,
+      key: assistant.secondRegistrationFormKey,
       child: Column(
         mainAxisAlignment: MainAxisAlignment.end,
         crossAxisAlignment: CrossAxisAlignment.end,
@@ -74,7 +76,7 @@ class _FinalRegistrationFormWidgetState
             child: TextFormField(
               decoration: Decorations.forIconTextField(
                   Icons.account_box_rounded, "full name"),
-              validator: (value) => '',
+              validator: (value) => assistant.validateFullName(value),
               autofocus: true,
             ),
           ),
@@ -84,7 +86,7 @@ class _FinalRegistrationFormWidgetState
               keyboardType: TextInputType.emailAddress,
               decoration:
                   Decorations.forIconTextField(Icons.email_rounded, "email"),
-              validator: (value) => "",
+              validator: (value) => assistant.validateEmail(value),
             ),
           ),
           Padding(
@@ -93,11 +95,11 @@ class _FinalRegistrationFormWidgetState
               obscureText: true,
               decoration:
                   Decorations.forIconTextField(Icons.lock_rounded, "password"),
-              validator: (value) => "",
+              validator: (value) => assistant.validatePassword(value),
             ),
           ),
           ElevatedButton(
-            onPressed: () => {},
+            onPressed: () => assistant.submit(),
             child: const Text("Let's go"),
           ),
         ],

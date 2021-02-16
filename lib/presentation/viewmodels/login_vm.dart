@@ -18,7 +18,7 @@ class LoginViewModel {
     debugPrint(password);
   }
 
-  validateEmail(String value) {
+  String validateEmail(String value) {
     if (value.isEmpty) {
       return 'this field should not be empty';
     }
@@ -31,7 +31,7 @@ class LoginViewModel {
     return null;
   }
 
-  validatePassword(String value) {
+  String validatePassword(String value) {
     if (value.isEmpty) {
       return 'should not be empty';
     }
