@@ -27,7 +27,8 @@ dependencies:
   get_it: ^5.0.6
   stacked_services: ^0.6.4
   injectable: ^1.0.7
-
+  simple_timer: ^1.0.1
+  flutter_riverpod: ^0.12.4
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^1.0.0
