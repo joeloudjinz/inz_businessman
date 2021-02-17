@@ -1,14 +1,11 @@
 import 'package:businessman/core/generated/locator.dart';
-import 'package:businessman/presentation/states/localization_state.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:stacked_services/stacked_services.dart';
 
 class LoginViewModel {
   final GlobalKey<FormState> loginFormKey = GlobalKey<FormState>();
   final navigator = locator<NavigationService>();
-  // final provider = ChangeNotifierProvider((ref) => LocalizationState());
 
   String email;
   String password;

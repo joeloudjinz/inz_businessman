@@ -1,10 +1,13 @@
 import 'package:businessman/core/generated/locator.dart';
+import 'package:businessman/main.dart';
 import 'package:businessman/presentation/helpers/decorations.dart';
 import 'package:businessman/presentation/viewmodels/phone_verification_vm.dart';
 import 'package:businessman/presentation/widgets/divider.dart';
 import 'package:businessman/presentation/widgets/sixteen_padding.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:simple_timer/simple_timer.dart';
 import 'package:stacked_services/stacked_services.dart';
 
@@ -37,13 +40,14 @@ class PhoneVerificationScreenContent extends StatelessWidget {
   }
 }
 
-class CodeVerificationWidget extends StatelessWidget {
+class CodeVerificationWidget extends HookWidget {
   final PhoneVerificationViewModel assistant;
 
   const CodeVerificationWidget({this.assistant});
 
   @override
   Widget build(BuildContext context) {
+    final notifier = useProvider(phoneVerificationProvider);
     return Form(
       key: assistant.phoneVerificationFormKey,
       child: Column(
@@ -63,16 +67,11 @@ class CodeVerificationWidget extends StatelessWidget {
           Row(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Consumer(
-                builder: (context, watch, child) {
-                  final notifier = watch(assistant.provider);
-                  return ElevatedButton(
-                    onPressed: notifier.resendBtnStatus
-                        ? () => assistant.resendPressed(notifier)
-                        : null,
-                    child: const Text('Resend'),
-                  );
-                },
+              ElevatedButton(
+                onPressed: notifier.resendBtnStatus
+                    ? () => assistant.resendPressed(notifier)
+                    : null,
+                child: const Text('Resend'),
               ),
               const Spacer(),
               ElevatedButton(
@@ -87,31 +86,27 @@ class CodeVerificationWidget extends StatelessWidget {
   }
 }
 
-class VerificationInformationCard extends StatelessWidget {
+class VerificationInformationCard extends HookWidget {
   final PhoneVerificationViewModel assistant;
 
   const VerificationInformationCard({this.assistant});
 
   @override
   Widget build(BuildContext context) {
+    final notifier = useProvider(phoneVerificationProvider);
     return Card(
       margin: const EdgeInsets.only(bottom: 8.0),
       child: Padding(
         padding: const EdgeInsets.all(8.0),
         child: Row(
           children: [
-            Consumer(
-              builder: (context, watch, child) {
-                final notifier = watch(assistant.provider);
-                return Expanded(
-                  child: SimpleTimer(
-                    duration: Duration(seconds: notifier.timerSeconds),
-                    displayProgressIndicator: false,
-                    status: notifier.timerStatus,
-                    onEnd: () => assistant.onTimerEndEvent(notifier),
-                  ),
-                );
-              },
+            Expanded(
+              child: SimpleTimer(
+                duration: Duration(seconds: notifier.timerSeconds),
+                displayProgressIndicator: false,
+                status: notifier.timerStatus,
+                onEnd: () => assistant.onTimerEndEvent(notifier),
+              ),
             ),
             Expanded(
               flex: 3,

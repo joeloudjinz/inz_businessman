@@ -1,6 +1,6 @@
 import 'package:businessman/core/generated/locator.dart';
+import 'package:businessman/main.dart';
 import 'package:businessman/presentation/helpers/decorations.dart';
-import 'package:businessman/presentation/states/providers.dart';
 import 'package:businessman/presentation/viewmodels/login_vm.dart';
 import 'package:businessman/presentation/widgets/divider.dart';
 import 'package:businessman/presentation/widgets/sixteen_padding.dart';
@@ -69,7 +69,7 @@ class LanguageSwitcherWidget extends StatelessWidget {
               color: Theme.of(context).accentColor,
             ),
             recognizer: TapGestureRecognizer()
-              ..onTap = () => context.read(Providers.localization).toArabic(),
+              ..onTap = () => context.read(localizationProvider).toArabic(),
           ),
           const TextSpan(text: " | "),
           TextSpan(
@@ -78,7 +78,7 @@ class LanguageSwitcherWidget extends StatelessWidget {
               color: Theme.of(context).accentColor,
             ),
             recognizer: TapGestureRecognizer()
-              ..onTap = () => context.read(Providers.localization).toFrench(),
+              ..onTap = () => context.read(localizationProvider).toFrench(),
           ),
           const TextSpan(text: " | "),
           TextSpan(
@@ -87,7 +87,7 @@ class LanguageSwitcherWidget extends StatelessWidget {
               color: Theme.of(context).accentColor,
             ),
             recognizer: TapGestureRecognizer()
-              ..onTap = () => context.read(Providers.localization).toEnglish(),
+              ..onTap = () => context.read(localizationProvider).toEnglish(),
           ),
         ],
       ),
