@@ -1,25 +1,34 @@
 import 'package:businessman/core/generated/locator.dart';
 import 'package:businessman/lang/localization_delegate.dart';
 import 'package:businessman/presentation/states/localization_state.dart';
-import 'package:businessman/presentation/states/providers.dart';
+import 'package:businessman/presentation/states/phone_verification_state.dart';
 import 'package:businessman/presentation/theme/custom_theme.dart';
 import 'package:flutter/material.dart';
 import 'package:auto_route/auto_route.dart' as auto_router;
 import 'package:businessman/core/generated/router.gr.dart' as app_router;
+import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:stacked_services/stacked_services.dart';
+
+final localizationProvider =
+    ChangeNotifierProvider((ref) => LocalizationState());
+final phoneVerificationProvider =
+    ChangeNotifierProvider((ref) => PhoneVerificationState());
 
 void main() {
   setupLocator();
-  runApp(ProviderScope(child: MyApp()));
+  runApp(
+    ProviderScope(
+      child: BusinessmanApp(),
+    ),
+  );
 }
 
-class MyApp extends ConsumerWidget {
+class BusinessmanApp extends HookWidget {
   @override
-  Widget build(BuildContext context, ScopedReader watch) {
-    final LocalizationState localizationState = watch(Providers.localization);
-
+  Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Businessman gate to enter Tidikelt mega market',
       builder: auto_router.ExtendedNavigator.builder<app_router.Router>(
@@ -27,7 +36,9 @@ class MyApp extends ConsumerWidget {
         initialRoute: app_router.Routes.splashScreen,
         navigatorKey: StackedService.navigatorKey,
       ),
-      locale: Locale.fromSubtags(languageCode: localizationState.current),
+      locale: Locale.fromSubtags(
+        languageCode: useProvider(localizationProvider).current,
+      ),
       localizationsDelegates: [
         const InzLocalizationsDelegate(),
         GlobalMaterialLocalizations.delegate,
