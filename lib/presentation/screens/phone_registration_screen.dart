@@ -1,11 +1,15 @@
 import 'package:businessman/core/generated/locator.dart';
 import 'package:businessman/presentation/helpers/decorations.dart';
+import 'package:businessman/presentation/viewmodels/phone_registration_vm.dart';
 import 'package:businessman/presentation/widgets/cards/basic_card.dart';
 import 'package:businessman/presentation/widgets/divider.dart';
 import 'package:businessman/presentation/widgets/sixteen_padding.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:stacked_services/stacked_services.dart';
+
+final PhoneRegistrationViewModel assistant =
+    locator<PhoneRegistrationViewModel>();
 
 class PhoneRegistrationScreen extends StatelessWidget {
   @override
@@ -17,18 +21,15 @@ class PhoneRegistrationScreen extends StatelessWidget {
 }
 
 class PhoneRegistrationScreenContent extends StatelessWidget {
-  final String cardTitle = "Phone Registration";
-  final String cardBody =
-      "we start with your phone number, it is crucial for running your business smoothly so make sure to provide a valid one.";
-
   @override
   Widget build(BuildContext context) {
+    assistant.prepareL10N(context);
     return Column(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
         BasicCard(
-          title: cardTitle,
-          body: cardBody,
+          title: assistant.l10n.phoneRegistrationCardTitle,
+          body: assistant.l10n.phoneRegistrationCardBody,
         ),
         PhoneRegistrationForm(),
         AppDivider(),
@@ -47,45 +48,32 @@ class PhoneRegistrationForm extends StatefulWidget {
 }
 
 class _PhoneRegistrationFormState extends State<PhoneRegistrationForm> {
-  final phoneRegistrationFormKey = GlobalKey<FormState>();
-
   @override
   Widget build(BuildContext context) {
     return Form(
-      key: phoneRegistrationFormKey,
+      key: assistant.phoneRegistrationFormKey,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.end,
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          PhoneField(),
+          Padding(
+            padding: const EdgeInsets.only(bottom: 8.0),
+            child: TextFormField(
+              keyboardType: TextInputType.number,
+              decoration: Decorations.forIconTextField(
+                Icons.phone_rounded,
+                assistant.l10n.phoneLabel,
+              ),
+              validator: (value) => assistant.processValue(value),
+            ),
+          ),
           ElevatedButton(
-            onPressed: () {
-              if (phoneRegistrationFormKey.currentState.validate()) {
-                return;
-              }
-            },
-            child: const Text("Next"),
+            onPressed: assistant.submit,
+            child: Text(
+              assistant.l10n.verifyPhoneButtonLabel,
+            ),
           ),
         ],
-      ),
-    );
-  }
-}
-
-class PhoneField extends StatelessWidget {
-  String validate(String value) {
-    if (value.isEmpty) return "should not be empty";
-    return null;
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.only(bottom: 8.0),
-      child: TextFormField(
-        keyboardType: TextInputType.number,
-        decoration: Decorations.forIconTextField(Icons.phone_rounded, "phone"),
-        validator: (value) => validate(value),
       ),
     );
   }
@@ -98,9 +86,9 @@ class AgreementText extends StatelessWidget {
       text: TextSpan(
         style: Theme.of(context).textTheme.caption,
         children: <TextSpan>[
-          const TextSpan(text: 'By clicking next, you agree to our '),
+          TextSpan(text: assistant.l10n.agreementTextPart1),
           TextSpan(
-              text: 'Terms of Service',
+              text: assistant.l10n.termsOfService,
               style: TextStyle(
                 color: Theme.of(context).accentColor,
               ),
@@ -108,9 +96,9 @@ class AgreementText extends StatelessWidget {
                 ..onTap = () {
                   //TODO: implement terms of service page for businessman
                 }),
-          const TextSpan(text: ' and that you have read our '),
+          TextSpan(text: assistant.l10n.agreementTextPart2),
           TextSpan(
-              text: 'Privacy Policy',
+              text: assistant.l10n.privacyPolicy,
               style: TextStyle(
                 color: Theme.of(context).accentColor,
               ),

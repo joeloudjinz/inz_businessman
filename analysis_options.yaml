@@ -1,5 +1,9 @@
 include: package:lint/analysis_options.yaml
 
+analyzer:
+  exclude:
+    - lib/lang/messages
+
 linter:
   rules:
     prefer_const_literals_to_create_immutables: false
@@ -7,3 +11,5 @@ linter:
     always_declare_return_types: false
     avoid_print: false
     avoid_classes_with_only_static_members: false
+    prefer_final_locals: false
+    unnecessary_string_escapes: false

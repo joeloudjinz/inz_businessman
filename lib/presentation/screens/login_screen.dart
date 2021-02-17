@@ -9,9 +9,12 @@ import 'package:flutter/material.dart';
 import 'package:stacked_services/stacked_services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
+final LoginViewModel assistant = locator<LoginViewModel>();
+
 class LoginScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    assistant.prepareL10N(context);
     return Scaffold(
       body: SixteenPadding(
         child: LayoutBuilder(
@@ -32,18 +35,16 @@ class LoginScreen extends StatelessWidget {
 }
 
 class LoginScreenContent extends StatelessWidget {
-  final _assistant = locator<LoginViewModel>();
-
   @override
   Widget build(BuildContext context) {
     return Column(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
         GreetingSection(),
-        LoginForm(assistant: _assistant),
-        ToRegistrationScreenWidget(assistant: _assistant),
+        LoginForm(),
+        ToRegistrationScreenWidget(),
         AppDivider(),
-        LanguageSwitcherWidget(assistant: _assistant),
+        LanguageSwitcherWidget(),
         AppDivider(),
         const Text('login screen'),
         MyNavigation(),
@@ -53,10 +54,6 @@ class LoginScreenContent extends StatelessWidget {
 }
 
 class LanguageSwitcherWidget extends StatelessWidget {
-  final LoginViewModel assistant;
-
-  const LanguageSwitcherWidget({this.assistant});
-
   @override
   Widget build(BuildContext context) {
     return RichText(
@@ -96,10 +93,6 @@ class LanguageSwitcherWidget extends StatelessWidget {
 }
 
 class LoginForm extends StatefulWidget {
-  final LoginViewModel assistant;
-
-  const LoginForm({this.assistant});
-
   @override
   _LoginFormState createState() => _LoginFormState();
 }
@@ -110,7 +103,7 @@ class _LoginFormState extends State<LoginForm> {
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 8.0),
       child: Form(
-          key: widget.assistant.loginFormKey,
+          key: assistant.loginFormKey,
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.end,
             mainAxisAlignment: MainAxisAlignment.center,
@@ -120,8 +113,8 @@ class _LoginFormState extends State<LoginForm> {
                 child: TextFormField(
                   keyboardType: TextInputType.emailAddress,
                   decoration: Decorations.forIconTextField(
-                      Icons.email_rounded, "email"),
-                  validator: (value) => widget.assistant.validateEmail(value),
+                      Icons.email_rounded, assistant.l10n.emailLabel),
+                  validator: (value) => assistant.validateEmail(value),
                   autofocus: true,
                 ),
               ),
@@ -130,14 +123,13 @@ class _LoginFormState extends State<LoginForm> {
                 child: TextFormField(
                   obscureText: true,
                   decoration: Decorations.forIconTextField(
-                      Icons.lock_rounded, "password"),
-                  validator: (value) =>
-                      widget.assistant.validatePassword(value),
+                      Icons.lock_rounded, assistant.l10n.passwordLabel),
+                  validator: (value) => assistant.validatePassword(value),
                 ),
               ),
               ElevatedButton(
-                onPressed: () => widget.assistant.submit(),
-                child: const Text('login'),
+                onPressed: () => assistant.submit(),
+                child: Text(assistant.l10n.loginButtonLabel),
               ),
             ],
           )),
@@ -159,11 +151,9 @@ class GreetingSection extends StatelessWidget {
               image: AssetImage('assets/logo.png'),
             ),
           ),
-          const Padding(
-            padding: EdgeInsets.all(16.0),
-            child: Text(
-              "Welcome back dear businessman, the market really needs your deals & services.",
-            ),
+          Padding(
+            padding: const EdgeInsets.all(16.0),
+            child: Text(assistant.l10n.greetingCardBody),
           ),
         ],
       ),
@@ -172,10 +162,6 @@ class GreetingSection extends StatelessWidget {
 }
 
 class ToRegistrationScreenWidget extends StatelessWidget {
-  final LoginViewModel assistant;
-
-  const ToRegistrationScreenWidget({this.assistant});
-
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -185,9 +171,9 @@ class ToRegistrationScreenWidget extends StatelessWidget {
           // style: const TextStyle(color: Colors.grey, fontSize: 10.0),
           style: Theme.of(context).textTheme.caption,
           children: <TextSpan>[
-            const TextSpan(text: "You don't have an account? "),
+            TextSpan(text: assistant.l10n.noAccountText),
             TextSpan(
-              text: 'start your business from here',
+              text: assistant.l10n.startBusinessText,
               style: TextStyle(
                 color: Theme.of(context).accentColor,
               ),

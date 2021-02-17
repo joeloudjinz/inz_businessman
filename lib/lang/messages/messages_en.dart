@@ -21,6 +21,20 @@ class MessageLookup extends MessageLookupByLibrary {
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static _notInlinedMessages(_) => <String, Function> {
-    "splashScreenTitle" : MessageLookupByLibrary.simpleMessage("Splash Screen")
+    "agreementTextPart1" : MessageLookupByLibrary.simpleMessage("By clicking next, you agree to our "),
+    "agreementTextPart2" : MessageLookupByLibrary.simpleMessage(" and that you have read our "),
+    "emailLabel" : MessageLookupByLibrary.simpleMessage("Email"),
+    "greetingCardBody" : MessageLookupByLibrary.simpleMessage("Welcome back dear businessman, the market really needs your deals & services."),
+    "loginButtonLabel" : MessageLookupByLibrary.simpleMessage("Login"),
+    "noAccountText" : MessageLookupByLibrary.simpleMessage("You don\'t have an account? "),
+    "passwordLabel" : MessageLookupByLibrary.simpleMessage("Password"),
+    "phoneLabel" : MessageLookupByLibrary.simpleMessage("Phone"),
+    "phoneRegistrationCardBody" : MessageLookupByLibrary.simpleMessage("we start with your phone number, it is crucial for running your business smoothly so make sure to provide a valid one."),
+    "phoneRegistrationCardTitle" : MessageLookupByLibrary.simpleMessage("Phone Registration"),
+    "privacyPolicy" : MessageLookupByLibrary.simpleMessage("Privacy policy"),
+    "splashScreenTitle" : MessageLookupByLibrary.simpleMessage("Splash Screen"),
+    "startBusinessText" : MessageLookupByLibrary.simpleMessage("start your business from here"),
+    "termsOfService" : MessageLookupByLibrary.simpleMessage("Terms of service"),
+    "verifyPhoneButtonLabel" : MessageLookupByLibrary.simpleMessage("Verify")
   };
 }

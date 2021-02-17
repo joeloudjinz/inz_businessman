@@ -6,10 +6,12 @@ import 'package:businessman/presentation/widgets/divider.dart';
 import 'package:businessman/presentation/widgets/sixteen_padding.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:simple_timer/simple_timer.dart';
 import 'package:stacked_services/stacked_services.dart';
+
+final PhoneVerificationViewModel assistant =
+    locator<PhoneVerificationViewModel>();
 
 class PhoneVerificationScreen extends StatelessWidget {
   @override
@@ -23,15 +25,13 @@ class PhoneVerificationScreen extends StatelessWidget {
 }
 
 class PhoneVerificationScreenContent extends StatelessWidget {
-  final _assistant = locator<PhoneVerificationViewModel>();
-
   @override
   Widget build(BuildContext context) {
     return Column(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        VerificationInformationCard(assistant: _assistant),
-        CodeVerificationWidget(assistant: _assistant),
+        VerificationInformationCard(),
+        CodeVerificationWidget(),
         AppDivider(),
         const Text('phone verification screen'),
         const MyNavigator(),
@@ -41,10 +41,6 @@ class PhoneVerificationScreenContent extends StatelessWidget {
 }
 
 class CodeVerificationWidget extends HookWidget {
-  final PhoneVerificationViewModel assistant;
-
-  const CodeVerificationWidget({this.assistant});
-
   @override
   Widget build(BuildContext context) {
     final notifier = useProvider(phoneVerificationProvider);
@@ -87,10 +83,6 @@ class CodeVerificationWidget extends HookWidget {
 }
 
 class VerificationInformationCard extends HookWidget {
-  final PhoneVerificationViewModel assistant;
-
-  const VerificationInformationCard({this.assistant});
-
   @override
   Widget build(BuildContext context) {
     final notifier = useProvider(phoneVerificationProvider);

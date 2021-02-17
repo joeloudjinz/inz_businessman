@@ -6,5 +6,75 @@
     "description": "عنوان صفحة البداية",
     "type": "text",
     "placeholders": {}
+  },
+  "greetingCardBody": "أهلا بكم من جديد عزيزي رجل الأعمال ، السوق حقا بحاجة إلى صفقاتك وخدماتك.",
+  "@greetingCardBody": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "noAccountText": "لا تمتلك حساب؟ ",
+  "@noAccountText": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "startBusinessText": "إبدأ من هنا",
+  "@startBusinessText": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "passwordLabel": "كلمة السر",
+  "@passwordLabel": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "emailLabel": "البريد الإلكتروني",
+  "@emailLabel": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "loginButtonLabel": "دخول",
+  "@loginButtonLabel": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "phoneLabel": "رقم الهاتف",
+  "@phoneLabel": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "verifyPhoneButtonLabel": "تأكيد",
+  "@verifyPhoneButtonLabel": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "agreementTextPart1": "بالضغط على تأكيد فإنك توافق على ",
+  "@agreementTextPart1": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "agreementTextPart2": " و قد قرأت ",
+  "@agreementTextPart2": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "termsOfService": "شروط الخدمة",
+  "@termsOfService": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "privacyPolicy": "سياسة الخصوصية.",
+  "@privacyPolicy": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "phoneRegistrationCardTitle": "تسجيل الإشتراك",
+  "@phoneRegistrationCardTitle": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "phoneRegistrationCardBody": "نبدأ برقم هاتفك ، إنه أمر بالغ الأهمية لإدارة عملك بسلاسة ، لذا تأكد من تقديم رقم صالح.",
+  "@phoneRegistrationCardBody": {
+    "type": "text",
+    "placeholders": {}
   }
 }

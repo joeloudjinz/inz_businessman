@@ -21,6 +21,20 @@ class MessageLookup extends MessageLookupByLibrary {
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static _notInlinedMessages(_) => <String, Function> {
-    "splashScreenTitle" : MessageLookupByLibrary.simpleMessage("صفحة البداية")
+    "agreementTextPart1" : MessageLookupByLibrary.simpleMessage("بالضغط على تأكيد فإنك توافق على "),
+    "agreementTextPart2" : MessageLookupByLibrary.simpleMessage(" و قد قرأت "),
+    "emailLabel" : MessageLookupByLibrary.simpleMessage("البريد الإلكتروني"),
+    "greetingCardBody" : MessageLookupByLibrary.simpleMessage("أهلا بكم من جديد عزيزي رجل الأعمال ، السوق حقا بحاجة إلى صفقاتك وخدماتك."),
+    "loginButtonLabel" : MessageLookupByLibrary.simpleMessage("دخول"),
+    "noAccountText" : MessageLookupByLibrary.simpleMessage("لا تمتلك حساب؟ "),
+    "passwordLabel" : MessageLookupByLibrary.simpleMessage("كلمة السر"),
+    "phoneLabel" : MessageLookupByLibrary.simpleMessage("رقم الهاتف"),
+    "phoneRegistrationCardBody" : MessageLookupByLibrary.simpleMessage("نبدأ برقم هاتفك ، إنه أمر بالغ الأهمية لإدارة عملك بسلاسة ، لذا تأكد من تقديم رقم صالح."),
+    "phoneRegistrationCardTitle" : MessageLookupByLibrary.simpleMessage("تسجيل الإشتراك"),
+    "privacyPolicy" : MessageLookupByLibrary.simpleMessage("سياسة الخصوصية."),
+    "splashScreenTitle" : MessageLookupByLibrary.simpleMessage("صفحة البداية"),
+    "startBusinessText" : MessageLookupByLibrary.simpleMessage("إبدأ من هنا"),
+    "termsOfService" : MessageLookupByLibrary.simpleMessage("شروط الخدمة"),
+    "verifyPhoneButtonLabel" : MessageLookupByLibrary.simpleMessage("تأكيد")
   };
 }

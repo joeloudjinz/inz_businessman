@@ -1,9 +1,10 @@
 import 'package:businessman/core/generated/locator.dart';
+import 'package:businessman/presentation/mixins/localization_mixin.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:stacked_services/stacked_services.dart';
 
-class LoginViewModel {
+class LoginViewModel with LocalizationMixin {
   final GlobalKey<FormState> loginFormKey = GlobalKey<FormState>();
   final navigator = locator<NavigationService>();
 

@@ -9,7 +9,6 @@ import 'messages/messages_all.dart';
 class InzLocalizations {
   /// Initialize localization systems and messages
   static Future<InzLocalizations> load(Locale locale) async {
-
     // If we're given "en_US", we'll use it as-is. If we're
     // given "en", we extract it and use it.
     final String localeName =
@@ -38,9 +37,85 @@ class InzLocalizations {
   static InzLocalizations of(BuildContext context) =>
       Localizations.of<InzLocalizations>(context, InzLocalizations);
 
+  /* splash screen ______________________________________________________*/
   String get splashScreenTitle => Intl.message(
         'Splash Screen',
         name: 'splashScreenTitle',
         desc: 'the title of splash screen',
       );
+
+  /* login screen ______________________________________________________*/
+  String get greetingCardBody => Intl.message(
+        "Welcome back dear businessman, the market really needs your deals & services.",
+        name: "greetingCardBody",
+      );
+
+  String get noAccountText => Intl.message(
+        "You don't have an account? ",
+        name: "noAccountText",
+      );
+
+  String get startBusinessText => Intl.message(
+        "start your business from here",
+        name: "startBusinessText",
+      );
+
+  String get passwordLabel => Intl.message(
+        "Password",
+        name: "passwordLabel",
+      );
+
+  String get emailLabel => Intl.message(
+        "Email",
+        name: "emailLabel",
+      );
+
+  String get loginButtonLabel => Intl.message(
+        "Login",
+        name: "loginButtonLabel",
+      );
+
+  /* phone registration screen ______________________________________________________*/
+  String get phoneLabel => Intl.message(
+        "Phone",
+        name: "phoneLabel",
+      );
+
+  String get verifyPhoneButtonLabel => Intl.message(
+        "Verify",
+        name: "verifyPhoneButtonLabel",
+      );
+
+  String get agreementTextPart1 => Intl.message(
+        "By clicking next, you agree to our ",
+        name: "agreementTextPart1",
+      );
+
+  String get agreementTextPart2 => Intl.message(
+        " and that you have read our ",
+        name: "agreementTextPart2",
+      );
+
+  String get termsOfService => Intl.message(
+        "Terms of service",
+        name: "termsOfService",
+      );
+
+  String get privacyPolicy => Intl.message(
+        "Privacy policy",
+        name: "privacyPolicy",
+      );
+
+  String get phoneRegistrationCardTitle => Intl.message(
+        "Phone Registration",
+        name: "phoneRegistrationCardTitle",
+      );
+
+  String get phoneRegistrationCardBody => Intl.message(
+        "we start with your phone number, it is crucial for running your business smoothly so make sure to provide a valid one.",
+        name: "phoneRegistrationCardBody",
+      );
+
+  /* phone verification screen ______________________________________________________*/
+
 }

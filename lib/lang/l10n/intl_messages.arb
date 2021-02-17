@@ -1,8 +1,78 @@
 {
-  "@@last_modified": "2021-02-17T10:19:21.667287",
+  "@@last_modified": "2021-02-17T19:35:19.593472",
   "splashScreenTitle": "Splash Screen",
   "@splashScreenTitle": {
     "description": "the title of splash screen",
+    "type": "text",
+    "placeholders": {}
+  },
+  "greetingCardBody": "Welcome back dear businessman, the market really needs your deals & services.",
+  "@greetingCardBody": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "noAccountText": "You don't have an account? ",
+  "@noAccountText": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "startBusinessText": "start your business from here",
+  "@startBusinessText": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "passwordLabel": "Password",
+  "@passwordLabel": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "emailLabel": "Email",
+  "@emailLabel": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "loginButtonLabel": "Login",
+  "@loginButtonLabel": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "phoneLabel": "Phone",
+  "@phoneLabel": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "verifyPhoneButtonLabel": "Verify",
+  "@verifyPhoneButtonLabel": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "agreementTextPart1": "By clicking next, you agree to our ",
+  "@agreementTextPart1": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "agreementTextPart2": " and that you have read our ",
+  "@agreementTextPart2": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "termsOfService": "Terms of service",
+  "@termsOfService": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "privacyPolicy": "Privacy policy",
+  "@privacyPolicy": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "phoneRegistrationCardTitle": "Phone Registration",
+  "@phoneRegistrationCardTitle": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "phoneRegistrationCardBody": "we start with your phone number, it is crucial for running your business smoothly so make sure to provide a valid one.",
+  "@phoneRegistrationCardBody": {
     "type": "text",
     "placeholders": {}
   }

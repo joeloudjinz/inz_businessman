@@ -1,8 +1,9 @@
 import 'package:businessman/core/generated/locator.dart';
+import 'package:businessman/presentation/mixins/localization_mixin.dart';
 import 'package:flutter/material.dart';
 import 'package:stacked_services/stacked_services.dart';
 
-class PhoneRegistrationViewModel {
+class PhoneRegistrationViewModel with LocalizationMixin {
   final phoneRegistrationFormKey = GlobalKey<FormState>();
   final navigator = locator<NavigationService>();
   String phone;
@@ -14,7 +15,7 @@ class PhoneRegistrationViewModel {
     print(phone);
   }
 
-  processValue(String value) {
+  String processValue(String value) {
     final String trimmed = value.trim();
     if (trimmed.isEmpty) {
       return 'should not be empty';
