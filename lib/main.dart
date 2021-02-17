@@ -1,5 +1,7 @@
 import 'package:businessman/core/generated/locator.dart';
 import 'package:businessman/lang/localization_delegate.dart';
+import 'package:businessman/presentation/states/localization_state.dart';
+import 'package:businessman/presentation/states/providers.dart';
 import 'package:businessman/presentation/theme/custom_theme.dart';
 import 'package:flutter/material.dart';
 import 'package:auto_route/auto_route.dart' as auto_router;
@@ -13,9 +15,11 @@ void main() {
   runApp(ProviderScope(child: MyApp()));
 }
 
-class MyApp extends StatelessWidget {
+class MyApp extends ConsumerWidget {
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, ScopedReader watch) {
+    final LocalizationState localizationState = watch(Providers.localization);
+
     return MaterialApp(
       title: 'Businessman gate to enter Tidikelt mega market',
       builder: auto_router.ExtendedNavigator.builder<app_router.Router>(
@@ -23,19 +27,13 @@ class MyApp extends StatelessWidget {
         initialRoute: app_router.Routes.splashScreen,
         navigatorKey: StackedService.navigatorKey,
       ),
-      locale: const Locale.fromSubtags(languageCode: 'ar'),
+      locale: Locale.fromSubtags(languageCode: localizationState.current),
       localizationsDelegates: [
         const InzLocalizationsDelegate(),
         GlobalMaterialLocalizations.delegate,
         GlobalWidgetsLocalizations.delegate,
       ],
       supportedLocales: [
-        // The order of this list matters. By default, if the
-        // device's locale doesn't exactly match a locale in
-        // supportedLocales then the first locale in
-        // supportedLocales with a matching
-        // Locale.languageCode is used. If that fails then the
-        // first locale in supportedLocales is used.
         const Locale('ar'),
         const Locale('fr'),
         const Locale('en'),

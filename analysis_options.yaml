@@ -6,4 +6,4 @@ linter:
     type_annotate_public_apis: false
     always_declare_return_types: false
     avoid_print: false
-    invalid_assignment: false
+    avoid_classes_with_only_static_members: false

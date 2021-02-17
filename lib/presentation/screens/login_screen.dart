@@ -1,11 +1,13 @@
 import 'package:businessman/core/generated/locator.dart';
 import 'package:businessman/presentation/helpers/decorations.dart';
+import 'package:businessman/presentation/states/providers.dart';
 import 'package:businessman/presentation/viewmodels/login_vm.dart';
 import 'package:businessman/presentation/widgets/divider.dart';
 import 'package:businessman/presentation/widgets/sixteen_padding.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:stacked_services/stacked_services.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 class LoginScreen extends StatelessWidget {
   @override
@@ -41,9 +43,54 @@ class LoginScreenContent extends StatelessWidget {
         LoginForm(assistant: _assistant),
         ToRegistrationScreenWidget(assistant: _assistant),
         AppDivider(),
+        LanguageSwitcherWidget(assistant: _assistant),
+        AppDivider(),
         const Text('login screen'),
         MyNavigation(),
       ],
+    );
+  }
+}
+
+class LanguageSwitcherWidget extends StatelessWidget {
+  final LoginViewModel assistant;
+
+  const LanguageSwitcherWidget({this.assistant});
+
+  @override
+  Widget build(BuildContext context) {
+    return RichText(
+      text: TextSpan(
+        style: Theme.of(context).textTheme.caption,
+        children: [
+          TextSpan(
+            text: 'العربية',
+            style: TextStyle(
+              color: Theme.of(context).accentColor,
+            ),
+            recognizer: TapGestureRecognizer()
+              ..onTap = () => context.read(Providers.localization).toArabic(),
+          ),
+          const TextSpan(text: " | "),
+          TextSpan(
+            text: 'Français',
+            style: TextStyle(
+              color: Theme.of(context).accentColor,
+            ),
+            recognizer: TapGestureRecognizer()
+              ..onTap = () => context.read(Providers.localization).toFrench(),
+          ),
+          const TextSpan(text: " | "),
+          TextSpan(
+            text: 'English',
+            style: TextStyle(
+              color: Theme.of(context).accentColor,
+            ),
+            recognizer: TapGestureRecognizer()
+              ..onTap = () => context.read(Providers.localization).toEnglish(),
+          ),
+        ],
+      ),
     );
   }
 }
@@ -58,8 +105,6 @@ class LoginForm extends StatefulWidget {
 }
 
 class _LoginFormState extends State<LoginForm> {
-  final GlobalKey<FormState> loginKey = GlobalKey<FormState>();
-
   @override
   Widget build(BuildContext context) {
     return Padding(
