@@ -1,0 +1,10 @@
+{
+  "@@locale": "fr",
+  "@@last_modified": "2021-02-17T10:19:21.667287",
+  "splashScreenTitle": "Ecran de Démarrage",
+  "@splashScreenTitle": {
+    "description": "Le titre d'écran de démarrage",
+    "type": "text",
+    "placeholders": {}
+  }
+}

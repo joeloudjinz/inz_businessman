@@ -1,0 +1,9 @@
+{
+  "@@last_modified": "2021-02-17T10:19:21.667287",
+  "splashScreenTitle": "Splash Screen",
+  "@splashScreenTitle": {
+    "description": "the title of splash screen",
+    "type": "text",
+    "placeholders": {}
+  }
+}

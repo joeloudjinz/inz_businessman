@@ -1,0 +1,10 @@
+{
+  "@@locale": "ar",
+  "@@last_modified": "2021-02-17T10:19:21.667287",
+  "splashScreenTitle": "صفحة البداية",
+  "@splashScreenTitle": {
+    "description": "عنوان صفحة البداية",
+    "type": "text",
+    "placeholders": {}
+  }
+}
