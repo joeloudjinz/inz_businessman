@@ -16,6 +16,7 @@ final PhoneVerificationViewModel assistant =
 class PhoneVerificationScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    assistant.prepareL10N(context);
     return Scaffold(
       body: SixteenPadding(
         child: PhoneVerificationScreenContent(),
@@ -34,7 +35,7 @@ class PhoneVerificationScreenContent extends StatelessWidget {
         CodeVerificationWidget(),
         AppDivider(),
         const Text('phone verification screen'),
-        const MyNavigator(),
+        MyNavigator(),
       ],
     );
   }
@@ -52,7 +53,7 @@ class CodeVerificationWidget extends HookWidget {
           TextFormField(
             decoration: Decorations.forIconTextField(
               Icons.mobile_friendly_rounded,
-              "Code",
+              assistant.l10n.verificationCodeLabel,
             ),
             keyboardType: TextInputType.number,
             maxLength: 6,
@@ -67,12 +68,12 @@ class CodeVerificationWidget extends HookWidget {
                 onPressed: notifier.resendBtnStatus
                     ? () => assistant.resendPressed(notifier)
                     : null,
-                child: const Text('Resend'),
+                child: Text(assistant.l10n.resendButtonLabel),
               ),
               const Spacer(),
               ElevatedButton(
                 onPressed: () => assistant.submit(),
-                child: const Text('Verify'),
+                child: Text(assistant.l10n.verifyPhoneButtonLabel),
               ),
             ],
           ),
@@ -109,12 +110,12 @@ class VerificationInformationCard extends HookWidget {
                   Padding(
                     padding: const EdgeInsets.only(bottom: 8.0),
                     child: Text(
-                      "Phone Verification",
+                      assistant.l10n.phoneVerificationCardTitle,
                       style: Theme.of(context).textTheme.headline4,
                     ),
                   ),
                   Text(
-                    "Enter the 6 digits you received in the SMS. if you didn't receive any click the resend button.",
+                    assistant.l10n.phoneVerificationCardBody,
                     style: Theme.of(context).textTheme.bodyText2,
                   ),
                 ],
@@ -128,10 +129,6 @@ class VerificationInformationCard extends HookWidget {
 }
 
 class MyNavigator extends StatelessWidget {
-  const MyNavigator({
-    Key key,
-  }) : super(key: key);
-
   @override
   Widget build(BuildContext context) {
     return Row(

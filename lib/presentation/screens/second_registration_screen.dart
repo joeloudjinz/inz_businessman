@@ -7,9 +7,13 @@ import 'package:businessman/presentation/widgets/sixteen_padding.dart';
 import 'package:flutter/material.dart';
 import 'package:stacked_services/stacked_services.dart';
 
+final SecondRegistrationViewModel assistant =
+    locator<SecondRegistrationViewModel>();
+
 class SecondRegistrationScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    assistant.prepareL10N(context);
     return Scaffold(
       body: SixteenPadding(
         child: LayoutBuilder(
@@ -30,18 +34,14 @@ class SecondRegistrationScreen extends StatelessWidget {
 }
 
 class SecondRegistrationScreenContent extends StatelessWidget {
-  final String cardTitle = "Final Registration";
-  final String cardBody =
-      "The final step at this journey, provide the necessary information about you and you are ready to grow your business.";
-
   @override
   Widget build(BuildContext context) {
     return Column(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
         BasicCard(
-          title: cardTitle,
-          body: cardBody,
+          title: assistant.l10n.secondRegistrationCardTitle,
+          body: assistant.l10n.secondRegistrationCardBody,
         ),
         FinalRegistrationFormWidget(),
         AppDivider(),
@@ -60,9 +60,6 @@ class FinalRegistrationFormWidget extends StatefulWidget {
 
 class _FinalRegistrationFormWidgetState
     extends State<FinalRegistrationFormWidget> {
-  final SecondRegistrationViewModel assistant =
-      locator<SecondRegistrationViewModel>();
-
   @override
   Widget build(BuildContext context) {
     return Form(
@@ -75,7 +72,9 @@ class _FinalRegistrationFormWidgetState
             padding: const EdgeInsets.only(bottom: 8.0),
             child: TextFormField(
               decoration: Decorations.forIconTextField(
-                  Icons.account_box_rounded, "full name"),
+                Icons.account_box_rounded,
+                assistant.l10n.fullNameLabel,
+              ),
               validator: (value) => assistant.validateFullName(value),
               autofocus: true,
             ),
@@ -84,8 +83,10 @@ class _FinalRegistrationFormWidgetState
             padding: const EdgeInsets.only(bottom: 8.0),
             child: TextFormField(
               keyboardType: TextInputType.emailAddress,
-              decoration:
-                  Decorations.forIconTextField(Icons.email_rounded, "email"),
+              decoration: Decorations.forIconTextField(
+                Icons.email_rounded,
+                assistant.l10n.emailLabel,
+              ),
               validator: (value) => assistant.validateEmail(value),
             ),
           ),
@@ -93,14 +94,16 @@ class _FinalRegistrationFormWidgetState
             padding: const EdgeInsets.only(bottom: 8.0),
             child: TextFormField(
               obscureText: true,
-              decoration:
-                  Decorations.forIconTextField(Icons.lock_rounded, "password"),
+              decoration: Decorations.forIconTextField(
+                Icons.lock_rounded,
+                assistant.l10n.passwordLabel,
+              ),
               validator: (value) => assistant.validatePassword(value),
             ),
           ),
           ElevatedButton(
             onPressed: () => assistant.submit(),
-            child: const Text("Let's go"),
+            child: Text(assistant.l10n.submitButtonLabel),
           ),
         ],
       ),

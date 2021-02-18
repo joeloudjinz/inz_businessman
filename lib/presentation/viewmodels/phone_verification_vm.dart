@@ -1,9 +1,10 @@
 import 'package:businessman/core/generated/locator.dart';
+import 'package:businessman/presentation/mixins/localization_mixin.dart';
 import 'package:businessman/presentation/states/phone_verification_state.dart';
 import 'package:flutter/material.dart';
 import 'package:stacked_services/stacked_services.dart';
 
-class PhoneVerificationViewModel {
+class PhoneVerificationViewModel with LocalizationMixin {
   final phoneVerificationFormKey = GlobalKey<FormState>();
   final navigator = locator<NavigationService>();
   String code;
@@ -27,7 +28,7 @@ class PhoneVerificationViewModel {
 
   String validateCode(String value) {
     if (value.length != 6) {
-      return "The code must be 6 characters.";
+      return l10n.codeLengthError;
     }
 
     code = value;

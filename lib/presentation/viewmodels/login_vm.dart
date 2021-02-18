@@ -21,12 +21,12 @@ class LoginViewModel with LocalizationMixin {
 
   String validateEmail(String value) {
     if (value.isEmpty) {
-      return 'this field should not be empty';
+      return l10n.requiredError;
     }
     if (!RegExp(
             r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+")
         .hasMatch(value)) {
-      return 'email address is invalid';
+      return l10n.invalidEmailError;
     }
     email = value;
     return null;
@@ -34,10 +34,10 @@ class LoginViewModel with LocalizationMixin {
 
   String validatePassword(String value) {
     if (value.isEmpty) {
-      return 'should not be empty';
+      return l10n.requiredError;
     }
     if (value.length <= 5) {
-      return 'password must contain more then 5';
+      return l10n.passwordLengthError;
     }
     password = value;
     return null;

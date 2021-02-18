@@ -1,6 +1,36 @@
 {
   "@@locale": "en",
   "@@last_modified": "2021-02-17T10:19:21.667287",
+  "requiredError": "This field is required",
+  "@requiredError": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "invalidEmailError": "Email address is invalid",
+  "@invalidEmailError": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "passwordLengthError": "Password must contain more then 5 characters",
+  "@passwordLengthError": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "phoneZeroError": "Phone number is invalid, it must start with 0",
+  "@phoneZeroError": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "phoneLengthError": "Phone number is invalid, it must be 10 digits",
+  "@phoneLengthError": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "codeLengthError": "Verification code is invalid, it must be 6 digits",
+  "@codeLengthError": {
+    "type": "text",
+    "placeholders": {}
+  },
   "splashScreenTitle": "Splash Screen",
   "@splashScreenTitle": {
     "description": "the title of splash screen",
@@ -74,6 +104,51 @@
   },
   "phoneRegistrationCardBody": "we start with your phone number, it is crucial for running your business smoothly so make sure to provide a valid one.",
   "@phoneRegistrationCardBody": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "phoneVerificationCardTitle": "Phone Verification",
+  "@phoneVerificationCardTitle": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "phoneVerificationCardBody": "Enter the 6 digits you received in the SMS. if you didn't receive the code click resend.",
+  "@phoneVerificationCardBody": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "verificationCodeLabel": "Code",
+  "@verificationCodeLabel": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "nextButtonLabel": "Verify",
+  "@nextButtonLabel": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "resendButtonLabel": "Resend",
+  "@resendButtonLabel": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "fullNameLabel": "Full Name",
+  "@fullNameLabel": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "secondRegistrationCardTitle": "Final Registration",
+  "@secondRegistrationCardTitle": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "secondRegistrationCardBody": "The final step at this journey, provide the necessary information about you and you are ready to grow your business.",
+  "@secondRegistrationCardBody": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "submitButtonLabel": "Let's go",
+  "@submitButtonLabel": {
     "type": "text",
     "placeholders": {}
   }

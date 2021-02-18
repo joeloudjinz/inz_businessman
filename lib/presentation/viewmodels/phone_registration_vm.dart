@@ -18,13 +18,13 @@ class PhoneRegistrationViewModel with LocalizationMixin {
   String processValue(String value) {
     final String trimmed = value.trim();
     if (trimmed.isEmpty) {
-      return 'should not be empty';
+      return l10n.requiredError;
     }
     if (trimmed[0] != '0') {
-      return 'phone number is invalid, it should start with 0';
+      return l10n.phoneZeroError;
     }
     if (trimmed.length != 10) {
-      return 'phone number is invalid, it should be 10 digits';
+      return l10n.phoneLengthError;
     }
 
     phone = "+213${trimmed.substring(1, trimmed.length)}";

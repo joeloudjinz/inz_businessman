@@ -1,13 +1,43 @@
 {
   "@@locale": "ar",
   "@@last_modified": "2021-02-17T10:19:21.667287",
+  "requiredError": "هذه الخانة مطلوبه",
+  "@requiredError": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "invalidEmailError": "البريد الإلكتروني غير صالح الهيئة",
+  "@invalidEmailError": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "passwordLengthError": "كلمة السر يجب أن تكون أكثر من 5 حروف",
+  "@passwordLengthError": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "phoneZeroError": "رقم الهاتف غير صالح, يجب أن يبدأ بصفر 0",
+  "@phoneZeroError": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "phoneLengthError": "رقم الهاتف غير صالح, يجب أن يكون 10 أرقام",
+  "@phoneLengthError": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "codeLengthError": "الرمز غير صالح, يجب أن يكون 6 أرقام",
+  "@codeLengthError": {
+    "type": "text",
+    "placeholders": {}
+  },
   "splashScreenTitle": "صفحة البداية",
   "@splashScreenTitle": {
     "description": "عنوان صفحة البداية",
     "type": "text",
     "placeholders": {}
   },
-  "greetingCardBody": "أهلا بكم من جديد عزيزي رجل الأعمال ، السوق حقا بحاجة إلى صفقاتك وخدماتك.",
+  "greetingCardBody": "أهلا بك من جديد عزيزي رجل الأعمال ، السوق حقا بحاجة إلى صفقاتك وخدماتك.",
   "@greetingCardBody": {
     "type": "text",
     "placeholders": {}
@@ -74,6 +104,51 @@
   },
   "phoneRegistrationCardBody": "نبدأ برقم هاتفك ، إنه أمر بالغ الأهمية لإدارة عملك بسلاسة ، لذا تأكد من تقديم رقم صالح.",
   "@phoneRegistrationCardBody": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "phoneVerificationCardTitle": "تأكيد رقم الهاتف",
+  "@phoneVerificationCardTitle": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "phoneVerificationCardBody": "أدخل ستة أرقام التي وصلت عبر الرسالة, إن لم تصلك إضغط على إعادة الإرسال.",
+  "@phoneVerificationCardBody": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "verificationCodeLabel": "الرمز",
+  "@verificationCodeLabel": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "nextButtonLabel": "تأكد",
+  "@nextButtonLabel": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "resendButtonLabel": "إعادة الإرسال",
+  "@resendButtonLabel": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "fullNameLabel": "الإسم الكامل",
+  "@fullNameLabel": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "secondRegistrationCardTitle": "اللمسات الأخيرة",
+  "@secondRegistrationCardTitle": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "secondRegistrationCardBody": "في الأخير أدخل معلوماتك الشخصية و ستكون جاهزاً لبدء أعمالك.",
+  "@secondRegistrationCardBody": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "submitButtonLabel": "هيا بنا",
+  "@submitButtonLabel": {
     "type": "text",
     "placeholders": {}
   }

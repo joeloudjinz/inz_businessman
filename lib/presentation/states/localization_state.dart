@@ -1,7 +1,7 @@
 import 'package:flutter/widgets.dart';
 
 class LocalizationState extends ChangeNotifier {
-  String current = 'ar';
+  String current = 'en';
 
   toArabic() {
     current = 'ar';

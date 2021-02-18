@@ -37,6 +37,38 @@ class InzLocalizations {
   static InzLocalizations of(BuildContext context) =>
       Localizations.of<InzLocalizations>(context, InzLocalizations);
 
+  /* Error messages ______________________________________________________*/
+  String get requiredError => Intl.message(
+        'This field is required',
+        name: 'requiredError',
+      );
+
+  String get invalidEmailError => Intl.message(
+        'Email address is invalid',
+        name: 'invalidEmailError',
+      );
+
+  String get passwordLengthError => Intl.message(
+        'Password must contain more then 5 characters',
+        name: 'passwordLengthError',
+      );
+
+  String get phoneZeroError => Intl.message(
+        'Phone number is invalid, it must start with 0',
+        name: 'phoneZeroError',
+      );
+
+  String get phoneLengthError => Intl.message(
+        'Phone number is invalid, it must be 10 digits',
+        name: 'phoneLengthError',
+      );
+
+  /// for phone verification
+  String get codeLengthError => Intl.message(
+        'Verification code is invalid, it must be 6 digits',
+        name: 'codeLengthError',
+      );
+
   /* splash screen ______________________________________________________*/
   String get splashScreenTitle => Intl.message(
         'Splash Screen',
@@ -117,5 +149,50 @@ class InzLocalizations {
       );
 
   /* phone verification screen ______________________________________________________*/
+  String get phoneVerificationCardTitle => Intl.message(
+        "Phone Verification",
+        name: "phoneVerificationCardTitle",
+      );
 
+  String get phoneVerificationCardBody => Intl.message(
+        "Enter the 6 digits you received in the SMS. if you didn't receive the code click resend.",
+        name: "phoneVerificationCardBody",
+      );
+
+  String get verificationCodeLabel => Intl.message(
+        "Code",
+        name: "verificationCodeLabel",
+      );
+
+  String get nextButtonLabel => Intl.message(
+        "Verify",
+        name: "nextButtonLabel",
+      );
+
+  String get resendButtonLabel => Intl.message(
+        "Resend",
+        name: "resendButtonLabel",
+      );
+
+/* second registration screen ______________________________________________________*/
+
+  String get fullNameLabel => Intl.message(
+        "Full Name",
+        name: "fullNameLabel",
+      );
+
+  String get secondRegistrationCardTitle => Intl.message(
+        "Final Registration",
+        name: "secondRegistrationCardTitle",
+      );
+
+  String get secondRegistrationCardBody => Intl.message(
+        "The final step at this journey, provide the necessary information about you and you are ready to grow your business.",
+        name: "secondRegistrationCardBody",
+      );
+
+  String get submitButtonLabel => Intl.message(
+        "Let's go",
+        name: "submitButtonLabel",
+      );
 }
