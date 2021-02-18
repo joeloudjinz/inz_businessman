@@ -2,6 +2,7 @@ import 'package:businessman/core/generated/locator.dart';
 import 'package:businessman/main.dart';
 import 'package:businessman/presentation/helpers/decorations.dart';
 import 'package:businessman/presentation/viewmodels/login_vm.dart';
+import 'package:businessman/presentation/widgets/cards/basic_card.dart';
 import 'package:businessman/presentation/widgets/divider.dart';
 import 'package:businessman/presentation/widgets/scrollable_scaffold_body.dart';
 import 'package:flutter/gestures.dart';
@@ -29,7 +30,10 @@ class LoginScreenContent extends StatelessWidget {
     return Column(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        GreetingSection(),
+        BasicCard(
+          title: 'Login',
+          body: assistant.l10n.greetingCardBody,
+        ),
         LoginForm(),
         ToRegistrationScreenWidget(),
         AppDivider(),
@@ -122,30 +126,6 @@ class _LoginFormState extends State<LoginForm> {
               ),
             ],
           )),
-    );
-  }
-}
-
-class GreetingSection extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Card(
-      elevation: 3,
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          const Padding(
-            padding: EdgeInsets.all(8.0),
-            child: Image(
-              image: AssetImage('assets/logo.png'),
-            ),
-          ),
-          Padding(
-            padding: const EdgeInsets.all(16.0),
-            child: Text(assistant.l10n.greetingCardBody),
-          ),
-        ],
-      ),
     );
   }
 }

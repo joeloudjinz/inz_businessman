@@ -14,31 +14,34 @@ class CustomTheme with ChangeNotifier {
 
   static ThemeData get lightTheme {
     return ThemeData(
-      // primarySwatch: Colors.blueGrey,
-      primaryColor: CustomColors.second,
-      accentColor: CustomColors.dark,
+      primaryColor: CustomColors.dark,
+      accentColor: CustomColors.strongOrange,
       scaffoldBackgroundColor: CustomColors.light,
-      textTheme: Typography.blackRedmond,
+      textTheme: const TextTheme(
+        headline4: TextStyle(color: Colors.black),
+        bodyText2: TextStyle(color: Colors.black54),
+        caption: TextStyle(color: Colors.black45),
+      ),
       cardTheme: CardTheme(
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(22.0),
         ),
-        color: Colors.blueGrey.shade100,
+        color: CustomColors.lightOrange,
       ),
       inputDecorationTheme: const InputDecorationTheme(
         filled: true,
-        fillColor: Colors.white60,
+        fillColor: CustomColors.lightOrange,
         border: OutlineInputBorder(
           borderRadius: BorderRadius.all(
-            Radius.circular(32.0),
+            Radius.circular(22.0),
           ),
         ),
       ),
       elevatedButtonTheme: ElevatedButtonThemeData(
         style: ElevatedButton.styleFrom(
-          primary: CustomColors.second,
+          primary: CustomColors.dark,
           shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(18.0),
+            borderRadius: BorderRadius.circular(15.0),
           ),
         ),
       ),

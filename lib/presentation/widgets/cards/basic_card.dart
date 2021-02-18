@@ -10,6 +10,7 @@ class BasicCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return Card(
       margin: const EdgeInsets.only(bottom: 8.0),
+
       child: Padding(
         padding: const EdgeInsets.all(16.0),
         child: Column(

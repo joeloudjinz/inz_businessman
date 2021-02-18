@@ -1,11 +1,12 @@
+import 'package:businessman/presentation/theme/colors.dart';
 import 'package:flutter/material.dart';
 
 class AppDivider extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Divider(
+    return const Divider(
       thickness: 1,
-      color: Theme.of(context).accentColor,
+      color: CustomColors.dark,
     );
   }
 }
