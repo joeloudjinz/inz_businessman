@@ -3,6 +3,7 @@ import 'package:businessman/presentation/helpers/decorations.dart';
 import 'package:businessman/presentation/viewmodels/second_registration_vm.dart';
 import 'package:businessman/presentation/widgets/cards/basic_card.dart';
 import 'package:businessman/presentation/widgets/divider.dart';
+import 'package:businessman/presentation/widgets/scrollable_scaffold_body.dart';
 import 'package:businessman/presentation/widgets/sixteen_padding.dart';
 import 'package:flutter/material.dart';
 import 'package:stacked_services/stacked_services.dart';
@@ -15,19 +16,8 @@ class SecondRegistrationScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     assistant.prepareL10N(context);
     return Scaffold(
-      body: SixteenPadding(
-        child: LayoutBuilder(
-          builder: (BuildContext context, BoxConstraints viewportConstraints) {
-            return SingleChildScrollView(
-              child: ConstrainedBox(
-                constraints: BoxConstraints(
-                  minHeight: viewportConstraints.maxHeight,
-                ),
-                child: SecondRegistrationScreenContent(),
-              ),
-            );
-          },
-        ),
+      body: ScaffoldBodyHolder(
+        child: SecondRegistrationScreenContent(),
       ),
     );
   }

@@ -13,17 +13,13 @@ class BasicCard extends StatelessWidget {
       child: Padding(
         padding: const EdgeInsets.all(16.0),
         child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Padding(
               padding: const EdgeInsets.only(bottom: 8.0),
-              child: Row(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    title,
-                    style: Theme.of(context).textTheme.headline4,
-                  ),
-                ],
+              child: Text(
+                title,
+                style: Theme.of(context).textTheme.headline4,
               ),
             ),
             // AppDivider(),

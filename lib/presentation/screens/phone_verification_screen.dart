@@ -3,7 +3,7 @@ import 'package:businessman/main.dart';
 import 'package:businessman/presentation/helpers/decorations.dart';
 import 'package:businessman/presentation/viewmodels/phone_verification_vm.dart';
 import 'package:businessman/presentation/widgets/divider.dart';
-import 'package:businessman/presentation/widgets/sixteen_padding.dart';
+import 'package:businessman/presentation/widgets/scrollable_scaffold_body.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
@@ -18,7 +18,7 @@ class PhoneVerificationScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     assistant.prepareL10N(context);
     return Scaffold(
-      body: SixteenPadding(
+      body: ScaffoldBodyHolder(
         child: PhoneVerificationScreenContent(),
       ),
     );

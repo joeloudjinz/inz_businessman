@@ -3,7 +3,7 @@ import 'package:businessman/main.dart';
 import 'package:businessman/presentation/helpers/decorations.dart';
 import 'package:businessman/presentation/viewmodels/login_vm.dart';
 import 'package:businessman/presentation/widgets/divider.dart';
-import 'package:businessman/presentation/widgets/sixteen_padding.dart';
+import 'package:businessman/presentation/widgets/scrollable_scaffold_body.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:stacked_services/stacked_services.dart';
@@ -16,19 +16,8 @@ class LoginScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     assistant.prepareL10N(context);
     return Scaffold(
-      body: SixteenPadding(
-        child: LayoutBuilder(
-          builder: (BuildContext context, BoxConstraints viewportConstraints) {
-            return SingleChildScrollView(
-              child: ConstrainedBox(
-                constraints: BoxConstraints(
-                  minHeight: viewportConstraints.maxHeight,
-                ),
-                child: LoginScreenContent(),
-              ),
-            );
-          },
-        ),
+      body: ScaffoldBodyHolder(
+        child: LoginScreenContent(),
       ),
     );
   }

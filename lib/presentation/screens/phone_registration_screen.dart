@@ -3,7 +3,7 @@ import 'package:businessman/presentation/helpers/decorations.dart';
 import 'package:businessman/presentation/viewmodels/phone_registration_vm.dart';
 import 'package:businessman/presentation/widgets/cards/basic_card.dart';
 import 'package:businessman/presentation/widgets/divider.dart';
-import 'package:businessman/presentation/widgets/sixteen_padding.dart';
+import 'package:businessman/presentation/widgets/scrollable_scaffold_body.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:stacked_services/stacked_services.dart';
@@ -15,7 +15,7 @@ class PhoneRegistrationScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: SixteenPadding(child: PhoneRegistrationScreenContent()),
+      body: ScaffoldBodyHolder(child: PhoneRegistrationScreenContent()),
     );
   }
 }
